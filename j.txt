@@ -1,0 +1,376 @@
+#To find the sum of any number of integers entered as command-line arguments.
+class Program1 {
+    public static void main(String args[]) {
+        int sum = 0;
+
+        for (int i = 0; i < args.length; i++) {
+            sum = sum + Integer.parseInt(args[i]);
+        }
+
+        System.out.println("Sum = " + sum);
+    }
+}
+
+output-
+Command: java Program1 10 20 30 40
+
+Sum = 100
+__________________________________
+2.To find the factorial of a given number.
+import java.util.Scanner;
+
+class Program2 {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+
+        int fact = 1;
+
+        for (int i = 1; i <= n; i++) {
+            fact = fact * i;
+        }
+
+        System.out.println("Factorial = " + fact);
+    }
+}
+
+output-
+Enter a number: 5
+Factorial = 120
+
+______________________________
+
+3-To convert a decimal number into a binary number.
+
+import java.util.Scanner;
+
+class Program3 {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter decimal number: ");
+        int n = sc.nextInt();
+
+        int binary = 0;
+        int place = 1;
+
+        while (n > 0) {
+            int rem = n % 2;
+            binary = binary + rem * place;
+            place = place * 10;
+            n = n / 2;
+        }
+
+        System.out.println("Binary number = " + binary);
+    }
+}
+
+Output:
+Enter decimal number: 10
+Binary number = 1010
+
+___________________________
+
+4-To check whether a given number is prime or not using keyboard input.
+
+import java.util.Scanner;
+
+class Program4 {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+
+        int count = 0;
+
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                count++;
+            }
+        }
+
+        if (count == 2) {
+            System.out.println("Prime Number");
+        } else {
+            System.out.println("Not a Prime Number");
+        }
+    }
+}
+
+Output:
+Enter a number: 7
+Prime Number
+
+___________________________
+5-To find the sum of integers entered through the keyboard, where the total number of integers is given as a command-line argument.
+
+import java.util.Scanner;
+
+class Program5 {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = Integer.parseInt(args[0]);
+        int sum = 0;
+
+        for (int i = 1; i <= n; i++) {
+            System.out.print("Enter number: ");
+            int num = sc.nextInt();
+
+            sum = sum + num;
+        }
+
+        System.out.println("Total Sum = " + sum);
+    }
+}
+Output:
+
+Enter number: 10
+Enter number: 20
+Enter number: 30
+
+Total Sum = 60
+______________________
+6-To demonstrate different functions of String and StringBuffer classes.
+
+class Program6 {
+    public static void main(String args[]) {
+
+        String s1 = "Hello";
+        String s2 = "Java";
+
+        System.out.println("Concatenation: " + s1.concat(s2));
+
+        System.out.println("Equals: " + s1.equals(s2));
+
+        StringBuffer sb = new StringBuffer("Hello");
+
+        sb.append(" World");
+        System.out.println("Append: " + sb);
+
+        sb.insert(5, " Java");
+        System.out.println("Insert: " + sb);
+
+        sb.setCharAt(0, 'h');
+        System.out.println("SetCharAt: " + sb);
+
+        sb.setLength(5);
+        System.out.println("SetLength: " + sb);
+    }
+}
+
+Output:
+Concatenation: HelloJava
+Equals: false
+Append: Hello World
+Insert: Hello Java World
+SetCharAt: hello Java World
+SetLength: hello
+_________________
+7-To create a Distance class with methods to calculate distance in feet and inches and demonstrate the use of the this keyword
+
+class Distance {
+    int feet, inches;
+
+    void setDistance(int feet, int inches) {
+        this.feet = feet;
+        this.inches = inches;
+    }
+
+    void display() {
+        System.out.println("Feet = " + feet);
+        System.out.println("Inches = " + inches);
+    }
+}
+
+class Program7 {
+    public static void main(String args[]) {
+
+        Distance d = new Distance();
+
+        d.setDistance(5, 8);
+
+        d.display();
+    }
+}
+
+Output:
+Feet = 5
+Inches = 8
+________________
+8-To create a Distance class using a constructor, assign values, create a reference variable and clone the first object.
+
+class Distance implements Cloneable {
+    int feet, inches;
+
+    Distance(int f, int i) {
+        feet = f;
+        inches = i;
+    }
+
+    void display() {
+        System.out.println("Feet: " + feet);
+        System.out.println("Inches: " + inches);
+    }
+
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    public static void main(String[] args)
+            throws CloneNotSupportedException {
+
+        Distance d1 = new Distance(5, 8);
+
+        Distance d2 = d1;  // Reference variable
+
+        Distance d3 = (Distance)d1.clone();
+
+        System.out.println("First Object:");
+        d1.display();
+
+        System.out.println("Second Object:");
+        d2.display();
+
+        System.out.println("Third Object (Clone):");
+        d3.display();
+    }
+}
+Output:
+First Object:
+Feet: 5
+Inches: 8
+
+Second Object:
+Feet: 5
+Inches: 8
+
+Third Object (Clone):
+Feet: 5
+Inches: 8
+_____________
+9-To demonstrate automatic type conversion during method overloading.
+class Program9 {
+
+    void show(long a) {
+        System.out.println("Long value: " + a);
+    }
+
+    void show(double a) {
+        System.out.println("Double value: " + a);
+    }
+
+    public static void main(String args[]) {
+
+        Program9 obj = new Program9();
+
+        int n = 10;
+
+        obj.show(n);
+    }
+}
+
+output-
+Long value: 10
+______________
+10-To demonstrate public and private access specifiers, passing primitive values and objects to methods, and the final keyword.
+
+class Student {
+    public int marks = 80;
+    private int age = 20;
+
+    public void display() {
+        System.out.println("Age: " + age);
+    }
+}
+
+public class Main {
+
+    static void change(int x) {
+        x = 100;
+    }
+
+    static void changeObject(Student s) {
+        s.marks = 90;
+    }
+
+    public static void main(String[] args) {
+
+        Student s = new Student();
+
+        System.out.println("Public Marks: " + s.marks);
+
+        s.display();
+
+        int a = 50;
+        change(a);
+
+        System.out.println("Primitive Value: " + a);
+
+        changeObject(s);
+
+        System.out.println("Object Marks: " + s.marks);
+
+        final int number = 10;
+
+        System.out.println("Final Number: " + number);
+    }
+}
+
+output-
+Public Marks: 80
+Age: 20
+Primitive Value: 50
+Object Marks: 90
+Final Number: 10
+___________
+11-To demonstrate static functions and variable-length arguments in Java.
+class Program11 {
+
+    static void sum(int... numbers) {
+
+        int total = 0;
+
+        for (int n : numbers) {
+            total = total + n;
+        }
+
+        System.out.println("Sum = " + total);
+    }
+
+    public static void main(String args[]) {
+
+        sum(10, 20);
+        sum(10, 20, 30);
+        sum(10, 20, 30, 40);
+    }
+}
+
+output-
+Sum = 30
+Sum = 60
+Sum = 100
+____________
+12-To demonstrate the concept of boxing and unboxing in Java.
+class Program12 {
+    public static void main(String args[]) {
+
+        int a = 10;
+
+        // Boxing
+        Integer obj = Integer.valueOf(a);
+
+        System.out.println("Boxing: " + obj);
+
+        // Unboxing
+        int b = obj.intValue();
+
+        System.out.println("Unboxing: " + b);
+    }
+}
+output-
+Boxing: 10
+Unboxing: 10
